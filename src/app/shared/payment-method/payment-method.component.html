@@ -1,0 +1,13 @@
+<ion-item>
+  <ion-label>Tipo de pago</ion-label>
+</ion-item>
+<ion-radio-group [(ngModel)]="paymentMethod">
+  <ion-item>
+    <ion-radio slot="start" value="Tarjeta"></ion-radio>
+    <ion-label>Tarjeta</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-radio slot="start" value="Efectivo"></ion-radio>
+    <ion-label>Efectivo</ion-label>
+  </ion-item>
+</ion-radio-group>

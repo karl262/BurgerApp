@@ -1,0 +1,18 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Calcular total de la compra</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <app-burger-selector [(ngModel)]="burgerType"></app-burger-selector>
+    <app-burger-number [(ngModel)]="quantity"></app-burger-number>
+    <app-burger-complements [(ngModel)]="complements"></app-burger-complements>
+    <app-payment-method [(ngModel)]="paymentMethod"></app-payment-method>
+
+    <ion-button expand="full" (click)="calcularTotal()">Calcular</ion-button>
+
+    <ion-item>
+      <ion-label>Total a pagar: ${{ totalPagar }}</ion-label>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
