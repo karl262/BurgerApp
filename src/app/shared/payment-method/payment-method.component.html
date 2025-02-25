@@ -1,7 +1,7 @@
 <ion-item>
   <ion-label>Tipo de pago</ion-label>
 </ion-item>
-<ion-radio-group [(ngModel)]="paymentMethod">
+<ion-radio-group [value]="paymentMethod" (ionChange)="onSelectPayment($event)">
   <ion-item>
     <ion-radio slot="start" value="Tarjeta"></ion-radio>
     <ion-label>Tarjeta</ion-label>

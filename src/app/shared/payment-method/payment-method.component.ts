@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-payment-method',
@@ -8,6 +8,12 @@ import {Component, Input} from '@angular/core';
 })
 export class PaymentMethodComponent {
 
-  @Input() paymentMethod: string = 'Tarjeta';
+  @Input() paymentMethod: string = '';
+  @Output() paymentSelected = new EventEmitter<string>();
+
+  onSelectPayment(event: any) {
+    this.paymentMethod = event.detail.value;
+    this.paymentSelected.emit(this.paymentMethod);
+  }
 
 }

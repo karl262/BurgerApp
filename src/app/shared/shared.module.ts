@@ -6,6 +6,7 @@ import {PaymentMethodComponent} from "./payment-method/payment-method.component"
 import {BurgerComplementsComponent} from "./burger-complements/burger-complements.component";
 import {IonicModule} from "@ionic/angular";
 import {FormsModule} from "@angular/forms";
+import {ModalPedidpComponent} from "./modal-pedido/modal-pedidp.component";
 
 
 
@@ -14,7 +15,8 @@ import {FormsModule} from "@angular/forms";
     BurgerSelectorComponent,
     BurgerNumberComponent,
     BurgerComplementsComponent,
-    PaymentMethodComponent
+    PaymentMethodComponent,
+    ModalPedidpComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import {FormsModule} from "@angular/forms";
     BurgerSelectorComponent,
     BurgerNumberComponent,
     PaymentMethodComponent,
-    BurgerComplementsComponent
+    BurgerComplementsComponent,
+    ModalPedidpComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Resumen del Pedido</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Tipo de hamburguesa:</ion-label>
+      <ion-text>{{ burgerType }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Cantidad:</ion-label>
+      <ion-text>{{ quantity }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Complementos:</ion-label>
+      <ion-text>{{ complements.length > 0 ? complements.join(', ') : 'Ninguno' }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Método de pago:</ion-label>
+      <ion-text>{{ paymentMethod }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Total a pagar:</ion-label>
+      <ion-text>${{ totalPagar }}</ion-text>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,4 +1,4 @@
 <ion-item>
-  <ion-label>Número de Hamburguesas</ion-label>
-  <ion-input type="number" min="1" [(ngModel)]="quantity"></ion-input>
+  <ion-label>Número de hamburguesas</ion-label>
+  <ion-input type="number" min="1" [value]="quantity" (ionChange)="onQuantityChange($event)"></ion-input>
 </ion-item>

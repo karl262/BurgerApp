@@ -1,18 +1,28 @@
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>Calcular total de la compra</ion-card-title>
-  </ion-card-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>BurgerApp</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-card-content>
-    <app-burger-selector [(ngModel)]="burgerType"></app-burger-selector>
-    <app-burger-number [(ngModel)]="quantity"></app-burger-number>
-    <app-burger-complements [(ngModel)]="complements"></app-burger-complements>
-    <app-payment-method [(ngModel)]="paymentMethod"></app-payment-method>
+<ion-content color="dark">
+  <ion-card color="dark">
+    <ion-card-header>
+      <ion-card-title>Calcular total de la compra</ion-card-title>
+    </ion-card-header>
 
-    <ion-button expand="full" (click)="calcularTotal()">Calcular</ion-button>
+    <ion-card-content>
+      <app-burger-selector [burgerType]="burgerType" (burgerSelected)="burgerType = $event"></app-burger-selector>
+      <app-burger-number [(ngModel)]="quantity"></app-burger-number>
+      <app-burger-complements [(ngModel)]="complements"></app-burger-complements>
+      <app-payment-method [(ngModel)]="paymentMethod"></app-payment-method>
 
-    <ion-item>
-      <ion-label>Total a pagar: ${{ totalPagar }}</ion-label>
-    </ion-item>
-  </ion-card-content>
-</ion-card>
+      <ion-button expand="full" color="warning" (click)="calcularTotal()">Calcular</ion-button>
+      <ion-button expand="full" color="danger" (click)="cancelar()">Cancelar</ion-button>
+      <ion-button expand="full" color="success" (click)="mostrarPedido()">Ver Pedido</ion-button>
+
+      <ion-item>
+        <ion-label>Total a pagar: ${{ totalPago }}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

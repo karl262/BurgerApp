@@ -2,10 +2,10 @@
   <ion-label>Complementos</ion-label>
 </ion-item>
 <ion-item>
-  <ion-checkbox [(ngModel)]="complements" [value]="'papas'"></ion-checkbox>
+  <ion-checkbox (ionChange)="onToggleComplement('papas', $event.detail.checked)"></ion-checkbox>
   <ion-label>Papas</ion-label>
 </ion-item>
 <ion-item>
-  <ion-checkbox [(ngModel)]="complements" [value]="'aros de cebolla'"></ion-checkbox>
+  <ion-checkbox (ionChange)="onToggleComplement('aros de cebolla', $event.detail.checked)"></ion-checkbox>
   <ion-label>Aros de cebolla</ion-label>
 </ion-item>

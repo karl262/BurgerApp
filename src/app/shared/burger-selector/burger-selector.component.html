@@ -1,6 +1,6 @@
 <ion-item>
   <ion-label>Tipo de hamburguesa</ion-label>
-  <ion-select [(ngModel)]="burgerType">
+  <ion-select [value]="burgerType" (ionChange)="onSelectBurger($event)">
     <ion-select-option value="Sencilla">Sencilla</ion-select-option>
     <ion-select-option value="Doble">Doble</ion-select-option>
     <ion-select-option value="Triple">Triple</ion-select-option>

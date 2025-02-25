@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-burger-selector',
@@ -8,6 +8,12 @@ import {Component, Input} from '@angular/core';
 })
 export class BurgerSelectorComponent {
 
-  @Input() burgerType: string = 'Sencilla';
+  @Input() burgerType: string = '';
+  @Output() burgerSelected = new EventEmitter<string>();
+
+  onSelectBurger(event: any) {
+    this.burgerType = event.detail.value;
+    this.burgerSelected.emit(this.burgerType);
+  }
 
 }

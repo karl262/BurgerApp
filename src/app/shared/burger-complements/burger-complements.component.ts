@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-burger-complements',
@@ -9,4 +9,14 @@ import {Component, Input} from '@angular/core';
 export class BurgerComplementsComponent {
 
   @Input() complements: string[] = [];
+  @Output() complementsSelected = new EventEmitter<string[]>();
+
+  onToggleComplement(complement: string, checked: boolean) {
+    if (checked) {
+      this.complements.push(complement);
+    } else {
+      this.complements = this.complements.filter(item => item !== complement);
+    }
+    this.complementsSelected.emit(this.complements);
+  }
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {ModalPedidpComponent} from "../shared/modal-pedido/modal-pedidp.component";
+import {ModalController} from "@ionic/angular";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,33 +10,69 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPage {
 
-  burgerType: string = 'Sencilla';
+  burgerType: string = '';
   quantity: number = 1;
   complements: string[] = [];
-  paymentMethod: string = 'Tarjeta';
-  totalPagar: number = 0;
+  paymentMethod: string = '';
+  totalPago: number = 0;
 
-  calcularTotal(): void {
-    const precios: Record<string, number> = {
-      Sencilla: 50,
-      Doble: 70,
-      Triple: 90,
-      Especial: 110
-    };
+  precio: Record<string, number> = {
+    Sencilla: 50,
+    Doble: 70,
+    Triple: 90,
+    Especial: 110
+  };
 
-    const complementosPrecio: Record<string, number> = {
-      papas: 20,
-      'aros de cebolla': 15
-    };
+  complementosPrecio: Record<string, number> = {
+    papas: 20,
+    'aros de cebolla': 15
+  };
 
-    let total: number = (precios[this.burgerType] || 50) * this.quantity;
+  constructor(private modalController: ModalController) {}
 
-    this.complements.forEach(comp => {
-      total += complementosPrecio[comp] || 0;
-    });
-
-    this.totalPagar = total;
+  actualizarValores(tipo: string, cantidad: number, complementos: string[], pago: string): void {
+    this.burgerType = tipo;
+    this.quantity = cantidad;
+    this.complements = complementos;
+    this.paymentMethod = pago;
+    this.calcularTotal();
   }
 
+  calcularTotal(): void {
+    if (!this.burgerType || this.quantity <= 0) {
+      this.totalPago = 0;
+      return;
+    }
+
+    let total: number = (this.precio[this.burgerType] || 0) * this.quantity;
+
+    this.complements.forEach(comp => {
+      total += this.complementosPrecio[comp] || 0;
+    });
+
+    this.totalPago = total;
+  }
+
+  cancelar(): void {
+    this.burgerType = '';
+    this.quantity = 1;
+    this.complements = [];
+    this.paymentMethod = '';
+    this.totalPago = 0;
+  }
+
+  async mostrarPedido() {
+    const modal = await this.modalController.create({
+      component: ModalPedidpComponent,
+      componentProps: {
+        burgerType: this.burgerType,
+        quantity: this.quantity,
+        complements: this.complements,
+        paymentMethod: this.paymentMethod,
+        totalPagar: this.totalPago,
+      }
+    });
+    return await modal.present();
+  }
 
 }
